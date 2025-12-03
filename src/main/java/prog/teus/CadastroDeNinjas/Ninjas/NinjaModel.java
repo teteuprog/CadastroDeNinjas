@@ -1,7 +1,7 @@
-package prog.teus.CadastroDeNinjas;
-
+package prog.teus.CadastroDeNinjas.Ninjas;
 
 import jakarta.persistence.*;
+import prog.teus.CadastroDeNinjas.Missoes.MissoesModel;
 
 @Entity
 @Table(name = "tb_cadastro")
@@ -12,6 +12,10 @@ public class NinjaModel {
     private Long id;
     private String nome, email;
     private int idade;
+
+    @ManyToOne
+    @JoinColumn(name = "missoes_id")
+    private MissoesModel missoes;
 
     public NinjaModel() {
     }
@@ -46,3 +50,4 @@ public class NinjaModel {
         this.idade = idade;
     }
 }
+
