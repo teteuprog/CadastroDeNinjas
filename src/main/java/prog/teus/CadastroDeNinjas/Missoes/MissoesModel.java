@@ -1,5 +1,6 @@
 package prog.teus.CadastroDeNinjas.Missoes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 import prog.teus.CadastroDeNinjas.Ninjas.NinjaModel;
 
 import java.util.LinkedList;
+import java.util.List;
 
 
 @Entity
@@ -23,6 +25,7 @@ public class MissoesModel {
     private String nome, rank;
 
     @OneToMany(mappedBy = "missoes")
-    private LinkedList<NinjaModel> ninja;
+    @JsonIgnore
+    private List<NinjaModel>ninja;
 
 }
