@@ -13,6 +13,10 @@ import prog.teus.CadastroDeNinjas.Missoes.MissoesModel;
 @NoArgsConstructor
 public class NinjaModel {
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")

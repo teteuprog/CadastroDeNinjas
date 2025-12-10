@@ -1,5 +1,6 @@
 package prog.teus.CadastroDeNinjas.Ninjas;
 
+import jakarta.persistence.Id;
 import org.springframework.stereotype.Service;
 import org.yaml.snakeyaml.events.Event;
 
@@ -26,7 +27,22 @@ public class NinjaService {
         return ninjaporID.orElse(null);
     }
 
+    //Cria o Ninja
     public NinjaModel criarNinja(NinjaModel ninja){
         return ninjaRepository.save(ninja);
+    }
+
+    //Deleta o ninja por ID
+    public void deletarNinja(Long id){
+        ninjaRepository.deleteById(id);
+    }
+
+    //ALterar ninja por id
+    public NinjaModel alterarNinja(Long id, NinjaModel ninjaAtualizado){
+        if (ninjaRepository.existsById(id)){
+            ninjaAtualizado.setId(id);
+            return ninjaRepository.save(ninjaAtualizado);
+        }
+        return null;
     }
 }
